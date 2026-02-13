@@ -1,0 +1,64 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+{{/* — SECURITE : Content Security Policy dynamique */}}
+{{ if .Site.Params.security.cspEnabled | default true }}
+  {{- $connectSrc := "'self'" -}}
+  {{- with .Site.Params.contact.formAction -}}
+    {{- $connectSrc = printf "'self' %s" . -}}
+  {{- end -}}
+  {{- with .Site.Params.security.extraConnectSrc -}}
+    {{- $connectSrc = printf "%s %s" $connectSrc . -}}
+  {{- end -}}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src {{ $connectSrc }}; frame-ancestors 'none'; form-action 'self'; base-uri 'self';">
+{{ end }}
+<meta name="referrer" content="strict-origin-when-cross-origin">
+
+{{/* — Title */}}
+{{ if .IsHome }}
+  <title>{{ .Site.Title }}</title>
+{{ else }}
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+{{ end }}
+
+{{/* — SEO partials */}}
+{{ partial "seo/meta.html" . }}
+{{ partial "seo/opengraph.html" . }}
+{{ partial "seo/jsonld.html" . }}
+
+{{/* — Fonts dynamiques depuis config */}}
+{{ $displayFont := .Site.Params.fonts.display | default "Cormorant Garamond" }}
+{{ $displayWeights := .Site.Params.fonts.displayWeights | default "400;500;600;700" }}
+{{ $bodyFont := .Site.Params.fonts.body | default "Outfit" }}
+{{ $bodyWeights := .Site.Params.fonts.bodyWeights | default "300;400;500;600" }}
+{{ $displayParam := printf "%s:wght@%s" (replace $displayFont " " "+") $displayWeights }}
+{{ $bodyParam := printf "%s:wght@%s" (replace $bodyFont " " "+") $bodyWeights }}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{ $fontsURL := printf "https://fonts.googleapis.com/css2?family=%s&family=%s&display=swap" $displayParam $bodyParam }}
+<link href="{{ $fontsURL | safeURL }}" rel="stylesheet">
+
+{{/* — CSS Design Tokens (SEULE exception inline — valeurs dynamiques depuis config) */}}
+<style>
+:root {
+  --color-primary: {{ .Site.Params.colors.primary | default "#1a1a2e" }};
+  --color-accent: {{ .Site.Params.colors.accent | default "#e2725b" }};
+  --color-bg: {{ .Site.Params.colors.background | default "#fafaf8" }};
+  --color-surface: {{ .Site.Params.colors.surface | default "#ffffff" }};
+  --color-text: {{ .Site.Params.colors.text | default "#2d2d2d" }};
+  --color-text-light: {{ .Site.Params.colors.textLight | default "#6b7280" }};
+  --color-border: {{ .Site.Params.colors.border | default "#e5e5e5" }};
+  --font-display: '{{ $displayFont }}', Georgia, serif;
+  --font-body: '{{ $bodyFont }}', system-ui, sans-serif;
+}
+</style>
+
+{{/* — Stylesheets */}}
+<link rel="stylesheet" href="{{ "css/utilities.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/animations.css" | relURL }}">
+
+{{/* — Favicon */}}
+<link rel="icon" type="image/svg+xml" href="{{ "images/favicon.svg" | relURL }}">

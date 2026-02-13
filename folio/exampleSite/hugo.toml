@@ -1,0 +1,178 @@
+# ============================================================================
+# FOLIO THEME — Configuration
+# Documentation complète : chaque paramètre est commenté.
+# Full documentation: every parameter is commented.
+# ============================================================================
+
+baseURL = "https://example.com/"
+languageCode = "fr"
+defaultContentLanguage = "fr"
+title = "Studio Horizon"
+theme = "folio"
+enableRobotsTXT = true
+enableEmoji = false
+
+# — Sécurité Hugo / Hugo Security
+# Empêche l'injection HTML dans le markdown / Prevents HTML injection in markdown
+[markup.goldmark.renderer]
+  unsafe = false
+
+# Aucune exécution externe autorisée / No external execution allowed
+[security]
+  [security.exec]
+    allow = []
+
+# — Confidentialité / Privacy
+[privacy]
+  [privacy.googleAnalytics]
+    disable = true
+  [privacy.youtube]
+    privacyEnhanced = true
+
+# ============================================================================
+# PARAMS DU THÈME / THEME PARAMS
+# ============================================================================
+[params]
+
+  # — Général / General
+  # Logo image URL. Si vide, logoText sera affiché.
+  # Logo image URL. If empty, logoText will be displayed.
+  logo = ""
+  logoText = "Studio Horizon"
+  description = "Agence créative spécialisée en design digital et stratégie de marque."
+  author = "Studio Horizon"
+  contactEmail = "hello@studiohorizon.com"
+
+  # — Couleurs / Colors
+  # Personnalisez les couleurs du thème. / Customize theme colors.
+  [params.colors]
+    primary = "#1a1a2e"        # Titres, nav / Headings, nav
+    accent = "#e2725b"         # Boutons, liens, accents / Buttons, links, accents
+    background = "#fafaf8"     # Fond de page / Page background
+    surface = "#ffffff"        # Cards, éléments surélevés / Cards, elevated elements
+    text = "#2d2d2d"           # Texte principal / Main text
+    textLight = "#6b7280"      # Texte secondaire / Secondary text
+    border = "#e5e5e5"         # Bordures / Borders
+
+  # — Typographies / Fonts
+  # Google Fonts chargées dynamiquement. / Google Fonts loaded dynamically.
+  [params.fonts]
+    display = "Cormorant Garamond"
+    displayWeights = "400;500;600;700"
+    body = "Outfit"
+    bodyWeights = "300;400;500;600"
+
+  # — Sections
+  # Activez/désactivez les sections. / Enable/disable sections.
+  # Réordonnez via "order". / Reorder via "order".
+  [params.sections]
+    hero = true
+    about = true
+    services = true
+    portfolio = true
+    testimonials = true
+    team = false               # Désactivé par défaut / Disabled by default
+    clients = false            # Désactivé par défaut / Disabled by default
+    cta = true
+    contact = true
+    order = ["hero", "about", "services", "portfolio", "testimonials", "team", "clients", "cta", "contact"]
+
+  # — Hero
+  [params.hero]
+    badge = "Agence Créative · Paris"
+    title = "Studio Horizon"
+    subtitle = "Nous concevons des expériences digitales mémorables pour les marques ambitieuses."
+    backgroundImage = ""       # Optionnel : URL image de fond / Optional: background image URL
+    [params.hero.cta1]
+      text = "Voir nos projets"
+      url = "#portfolio"
+    [params.hero.cta2]
+      text = "Nous contacter"
+      url = "#contact"
+
+  # — À propos / About
+  [params.about]
+    title = ""                 # Vide = utilise i18n / Empty = uses i18n
+    image = "/images/portrait.jpg"
+    imageAlt = "L'équipe Studio Horizon"
+    # Supporte le Markdown / Supports Markdown
+    content = """
+Fondé en 2020, **Studio Horizon** accompagne les marques dans leur transformation digitale.
+
+Notre approche mêle stratégie, design et technologie pour créer des expériences qui marquent les esprits.
+"""
+    [[params.about.counters]]
+      value = 48
+      label = "Projets livrés"
+    [[params.about.counters]]
+      value = 6
+      label = "Années d'expérience"
+    [[params.about.counters]]
+      value = 32
+      label = "Clients actifs"
+
+  # — Services / Products
+  # Données dans data/services.yaml / Data in data/services.yaml
+
+  # — Portfolio / Projects
+  # Données dans data/portfolio.yaml / Data in data/portfolio.yaml
+
+  # — Testimonials
+  # Données dans data/testimonials.yaml / Data in data/testimonials.yaml
+
+  # — Team
+  # Données dans data/team.yaml / Data in data/team.yaml
+
+  # — Clients / Logos
+  # Données dans data/clients.yaml / Data in data/clients.yaml
+
+  # — CTA Banner
+  [params.cta]
+    title = "Un projet en tête ?"
+    subtitle = "Discutons de votre vision et donnons-lui forme."
+    buttonText = "Démarrer un projet"
+    buttonUrl = "#contact"
+
+  # — Contact
+  [params.contact]
+    title = ""                 # Vide = utilise i18n / Empty = uses i18n
+    # Mode de soumission / Submission mode:
+    # "api"      → fetch POST JSON vers formAction
+    # "netlify"  → Netlify Forms (attribut netlify sur le form)
+    # "formspree"→ POST vers formAction (Formspree URL)
+    formAction = "https://api.example.com/contact"
+    formMethod = "api"
+    honeypotField = "website"  # SECURITE : champ invisible anti-bot
+    successMessage = ""        # Vide = utilise i18n / Empty = uses i18n
+    errorMessage = ""          # Vide = utilise i18n / Empty = uses i18n
+    # Sujets du select (optionnel) / Select subjects (optional)
+    subjects = ["Demande de devis", "Partenariat", "Autre"]
+
+  # — Footer
+  [params.footer]
+    copyright = "© 2026 Studio Horizon. Tous droits réservés."
+    [[params.footer.links]]
+      name = "Mentions légales"
+      url = "/mentions-legales/"
+    [[params.footer.social]]
+      platform = "linkedin"
+      url = "https://linkedin.com/company/example"
+    [[params.footer.social]]
+      platform = "instagram"
+      url = "https://instagram.com/example"
+    [[params.footer.social]]
+      platform = "github"
+      url = "https://github.com/example"
+
+  # — SEO
+  [params.seo]
+    ogImage = "/images/og-default.jpg"
+    twitterHandle = ""
+    jsonldType = "Organization" # "Person" ou "Organization"
+
+  # — Sécurité / Security
+  [params.security]
+    cspEnabled = true
+    # Domaines supplémentaires pour CSP connect-src (séparés par espace)
+    # Additional domains for CSP connect-src (space-separated)
+    extraConnectSrc = ""

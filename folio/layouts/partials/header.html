@@ -1,0 +1,48 @@
+{{ $sections := .Site.Params.sections }}
+{{ $order := $sections.order | default (slice "hero" "about" "services" "portfolio" "testimonials" "team" "clients" "cta" "contact") }}
+
+<header class="site-header" id="site-header" role="banner">
+  <div class="container header__inner">
+    {{/* Logo */}}
+    <a href="{{ "/" | relURL }}" class="header__logo" aria-label="{{ .Site.Title }}">
+      {{ with .Site.Params.logo }}
+        <img src="{{ . }}" alt="{{ $.Site.Title }}" class="header__logo-img" loading="eager">
+      {{ else }}
+        <span class="header__logo-text">{{ .Site.Params.logoText | default .Site.Title }}</span>
+      {{ end }}
+    </a>
+
+    {{/* Navigation */}}
+    <nav class="header__nav" id="main-nav" role="navigation" aria-label="{{ i18n "nav_aria_label" | default "Navigation principale" }}">
+      <ul class="header__nav-list">
+        {{ range $order }}
+          {{ $sectionName := . }}
+          {{/* N'affiche que les sections activées et navigables (pas hero, pas cta) */}}
+          {{ if and (ne $sectionName "hero") (ne $sectionName "cta") }}
+            {{ $enabled := index $sections $sectionName }}
+            {{ if $enabled }}
+              <li class="header__nav-item">
+                <a href="#{{ $sectionName }}" class="header__nav-link">
+                  {{ i18n (printf "nav_%s" $sectionName) }}
+                </a>
+              </li>
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </ul>
+    </nav>
+
+    {{/* Burger menu mobile */}}
+    <button
+      class="header__burger"
+      id="burger-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="main-nav"
+      aria-label="{{ i18n "menu_toggle" | default "Menu" }}">
+      <span class="header__burger-line"></span>
+      <span class="header__burger-line"></span>
+      <span class="header__burger-line"></span>
+    </button>
+  </div>
+</header>

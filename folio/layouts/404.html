@@ -1,0 +1,9 @@
+{{ define "main" }}
+<section class="page-single page-404">
+  <div class="container">
+    <h1 class="page-single__title">{{ i18n "page_404_title" | default "Page introuvable" }}</h1>
+    <p>{{ i18n "page_404_text" | default "La page que vous cherchez n'existe pas." }}</p>
+    <a href="{{ "/" | relURL }}" class="btn btn--primary">{{ i18n "page_404_back" | default "Retour à l'accueil" }}</a>
+  </div>
+</section>
+{{ end }}

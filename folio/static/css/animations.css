@@ -1,0 +1,38 @@
+/* ============================================
+   ANIMATIONS — Transitions et keyframes
+   Animations GSAP gérées dans JS.
+   Ce fichier contient les états CSS de base.
+   ============================================ */
+
+/* — États d'animation par défaut (avant GSAP init) */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* — Fallback si JS désactivé */
+.no-js [data-animate] {
+  opacity: 1;
+  transform: none;
+}
+
+/* — Scroll indicator */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.scroll-indicator {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* — Section placeholder (temporaire M1, supprimé en M2) */
+.section__placeholder {
+  padding: 4rem 0;
+  text-align: center;
+  color: var(--color-text-light);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}

@@ -1,0 +1,23 @@
+- name: "Maison Dufour"
+  logo: "/images/placeholder/client-1.svg"
+  link: ""
+
+- name: "TravelBuddy"
+  logo: "/images/placeholder/client-2.svg"
+  link: ""
+
+- name: "FinanceFlow"
+  logo: "/images/placeholder/client-3.svg"
+  link: ""
+
+- name: "Brasserie Horizon"
+  logo: "/images/placeholder/client-4.svg"
+  link: ""
+
+- name: "ArchiStudio"
+  logo: "/images/placeholder/client-5.svg"
+  link: ""
+
+- name: "EventPro"
+  logo: "/images/placeholder/client-6.svg"
+  link: ""

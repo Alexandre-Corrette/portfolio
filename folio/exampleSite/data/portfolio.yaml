@@ -1,0 +1,35 @@
+- title: "Refonte E-commerce Maison Dufour"
+  description: "Nouvelle plateforme e-commerce avec +45% de conversion."
+  image: "/images/placeholder/project-1.svg"
+  tags: ["E-commerce", "UI/UX"]
+  link: ""
+
+- title: "App Mobile TravelBuddy"
+  description: "Application de voyage collaborative avec 50K+ utilisateurs."
+  image: "/images/placeholder/project-2.svg"
+  tags: ["Mobile", "Design"]
+  link: ""
+
+- title: "Dashboard Analytics Fintech"
+  description: "Interface de pilotage pour une startup fintech en série A."
+  image: "/images/placeholder/project-3.svg"
+  tags: ["Dashboard", "Développement"]
+  link: ""
+
+- title: "Identité Visuelle Brasserie Horizon"
+  description: "Branding complet pour une brasserie artisanale."
+  image: "/images/placeholder/project-4.svg"
+  tags: ["Branding", "Design"]
+  link: ""
+
+- title: "Plateforme SaaS EventPro"
+  description: "Solution de gestion événementielle B2B."
+  image: "/images/placeholder/project-5.svg"
+  tags: ["SaaS", "Développement"]
+  link: ""
+
+- title: "Site Vitrine Architecte"
+  description: "Portfolio immersif pour un cabinet d'architecture."
+  image: "/images/placeholder/project-6.svg"
+  tags: ["Portfolio", "UI/UX"]
+  link: ""

@@ -1,0 +1,7 @@
+{{/* Params: .title, .description, .icon, .badge, .link */}}
+<div class="card" {{ with .link }}data-link="{{ . }}"{{ end }}>
+  {{ with .icon }}<div class="card__icon">{{ . }}</div>{{ end }}
+  {{ with .badge }}<span class="card__badge">{{ . }}</span>{{ end }}
+  <h3 class="card__title">{{ .title }}</h3>
+  <p class="card__description">{{ .description }}</p>
+</div>

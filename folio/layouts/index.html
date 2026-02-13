@@ -1,0 +1,12 @@
+{{ define "main" }}
+  {{ $sections := .Site.Params.sections }}
+  {{ $order := $sections.order | default (slice "hero" "about" "services" "portfolio" "testimonials" "team" "clients" "cta" "contact") }}
+
+  {{ range $order }}
+    {{ $sectionName := . }}
+    {{ $enabled := index $sections $sectionName }}
+    {{ if $enabled }}
+      {{ partial (printf "sections/%s.html" $sectionName) $ }}
+    {{ end }}
+  {{ end }}
+{{ end }}
