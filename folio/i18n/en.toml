@@ -1,2 +1,107 @@
+# ============================================
 # Folio Theme — English translations
 # Completed in M3 (FOLIO-16)
+# ============================================
+
+# — Navigation
+[nav_about]
+other = "About"
+
+[nav_services]
+other = "Services"
+
+[nav_portfolio]
+other = "Portfolio"
+
+[nav_testimonials]
+other = "Testimonials"
+
+[nav_team]
+other = "Team"
+
+[nav_clients]
+other = "Clients"
+
+[nav_contact]
+other = "Contact"
+
+[nav_aria_label]
+other = "Main navigation"
+
+# — Sections
+[hero_scroll]
+other = "Scroll"
+
+[about_title]
+other = "About"
+
+[services_title]
+other = "Services"
+
+[portfolio_title]
+other = "Portfolio"
+
+[testimonials_title]
+other = "Testimonials"
+
+[team_title]
+other = "Our Team"
+
+[contact_title]
+other = "Contact"
+
+# — Form
+[contact_name]
+other = "Name"
+
+[contact_email]
+other = "Email"
+
+[contact_subject]
+other = "Subject"
+
+[contact_message]
+other = "Message"
+
+[contact_phone]
+other = "Phone"
+
+[contact_send]
+other = "Send"
+
+[contact_sending]
+other = "Sending..."
+
+[contact_success]
+other = "Message sent successfully!"
+
+[contact_error]
+other = "An error occurred. Please try again."
+
+# — Footer
+[footer_rights]
+other = "All rights reserved"
+
+[footer_nav_aria]
+other = "Legal links"
+
+# — Social
+[social_visit]
+other = "Visit"
+
+# — 404
+[page_404_title]
+other = "Page not found"
+
+[page_404_text]
+other = "The page you are looking for does not exist."
+
+[page_404_back]
+other = "Back to home"
+
+# — Accessibility
+[menu_toggle]
+other = "Menu"
+
+[scroll_top]
+other = "Back to top"

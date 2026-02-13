@@ -1,0 +1,30 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container footer__inner">
+    <div class="footer__content">
+      {{/* Copyright */}}
+      {{ with .Site.Params.footer.copyright }}
+        <p class="footer__copyright">{{ . }}</p>
+      {{ else }}
+        <p class="footer__copyright">{{ printf "© %d %s. %s" now.Year $.Site.Title (i18n "footer_rights") }}</p>
+      {{ end }}
+
+      {{/* Links */}}
+      {{ with .Site.Params.footer.links }}
+        <nav class="footer__links" aria-label="{{ i18n "footer_nav_aria" | default "Liens légaux" }}">
+          {{ range . }}
+            <a href="{{ .url }}" class="footer__link">{{ .name }}</a>
+          {{ end }}
+        </nav>
+      {{ end }}
+    </div>
+
+    {{/* Social */}}
+    {{ with .Site.Params.footer.social }}
+      <div class="footer__social">
+        {{ range . }}
+          {{ partial "components/social-icons.html" . }}
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+</footer>

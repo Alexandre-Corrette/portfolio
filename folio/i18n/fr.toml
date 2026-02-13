@@ -1,2 +1,107 @@
+# ============================================
 # Folio Theme — Traductions françaises
 # Complété en M3 (FOLIO-16)
+# ============================================
+
+# — Navigation
+[nav_about]
+other = "À propos"
+
+[nav_services]
+other = "Services"
+
+[nav_portfolio]
+other = "Réalisations"
+
+[nav_testimonials]
+other = "Témoignages"
+
+[nav_team]
+other = "Équipe"
+
+[nav_clients]
+other = "Clients"
+
+[nav_contact]
+other = "Contact"
+
+[nav_aria_label]
+other = "Navigation principale"
+
+# — Sections
+[hero_scroll]
+other = "Défiler"
+
+[about_title]
+other = "À propos"
+
+[services_title]
+other = "Services"
+
+[portfolio_title]
+other = "Réalisations"
+
+[testimonials_title]
+other = "Témoignages"
+
+[team_title]
+other = "L'équipe"
+
+[contact_title]
+other = "Contact"
+
+# — Formulaire
+[contact_name]
+other = "Nom"
+
+[contact_email]
+other = "Email"
+
+[contact_subject]
+other = "Sujet"
+
+[contact_message]
+other = "Message"
+
+[contact_phone]
+other = "Téléphone"
+
+[contact_send]
+other = "Envoyer"
+
+[contact_sending]
+other = "Envoi..."
+
+[contact_success]
+other = "Message envoyé avec succès !"
+
+[contact_error]
+other = "Une erreur est survenue. Veuillez réessayer."
+
+# — Footer
+[footer_rights]
+other = "Tous droits réservés"
+
+[footer_nav_aria]
+other = "Liens légaux"
+
+# — Social
+[social_visit]
+other = "Visiter"
+
+# — 404
+[page_404_title]
+other = "Page introuvable"
+
+[page_404_text]
+other = "La page que vous cherchez n'existe pas."
+
+[page_404_back]
+other = "Retour à l'accueil"
+
+# — Accessibilité
+[menu_toggle]
+other = "Menu"
+
+[scroll_top]
+other = "Retour en haut"

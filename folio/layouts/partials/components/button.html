@@ -1,0 +1,3 @@
+{{/* Params: .text, .url, .style ("primary" | "outline") */}}
+{{ $style := .style | default "primary" }}
+<a href="{{ .url }}" class="btn btn--{{ $style }}">{{ .text }}</a>
