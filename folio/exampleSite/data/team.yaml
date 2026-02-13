@@ -1,0 +1,26 @@
+- name: "Alex Martin"
+  role: "Fondateur & Directeur Créatif"
+  image: "/images/placeholder/team-1.svg"
+  social:
+    linkedin: "https://linkedin.com"
+    twitter: ""
+
+- name: "Camille Dubois"
+  role: "Lead Designer"
+  image: "/images/placeholder/team-2.svg"
+  social:
+    linkedin: "https://linkedin.com"
+    instagram: "https://instagram.com"
+
+- name: "Lucas Bernard"
+  role: "Développeur Full-Stack"
+  image: "/images/placeholder/team-3.svg"
+  social:
+    linkedin: "https://linkedin.com"
+    github: "https://github.com"
+
+- name: "Léa Moreau"
+  role: "Stratégiste Digitale"
+  image: "/images/placeholder/team-4.svg"
+  social:
+    linkedin: "https://linkedin.com"
