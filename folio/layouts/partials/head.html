@@ -37,7 +37,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family={{ $displayParam }}&family={{ $bodyParam }}&display=swap" rel="stylesheet">
+{{ $fontsURL := printf "https://fonts.googleapis.com/css2?family=%s&family=%s&display=swap" $displayParam $bodyParam }}
+<link href="{{ $fontsURL | safeURL }}" rel="stylesheet">
 
 {{/* — CSS Design Tokens (SEULE exception inline — valeurs dynamiques depuis config) */}}
 <style>
