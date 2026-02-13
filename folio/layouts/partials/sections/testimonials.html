@@ -10,11 +10,12 @@
     {{ with .Site.Data.testimonials }}
     <div class="testimonials__track" data-animate>
       {{ range . }}
+      {{ $testimonial := . }}
       <blockquote class="testimonial">
         <p class="testimonial__quote">{{ .quote }}</p>
         <footer class="testimonial__footer">
           {{ with .avatar }}
-          <img src="{{ . }}" alt="{{ $.author }}" class="testimonial__avatar" loading="lazy">
+          <img src="{{ . }}" alt="{{ $testimonial.author }}" class="testimonial__avatar" loading="lazy">
           {{ end }}
           <div class="testimonial__author-info">
             <cite class="testimonial__author">{{ .author }}</cite>
