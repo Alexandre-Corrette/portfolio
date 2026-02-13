@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#1a1a2e"/>
+  <text x="600" y="280" text-anchor="middle" font-family="Georgia,serif" font-size="72" font-weight="700" fill="#fafaf8">Studio Horizon</text>
+  <text x="600" y="360" text-anchor="middle" font-family="system-ui,sans-serif" font-size="24" font-weight="300" fill="#fafaf8" opacity="0.7">Agence creative - Paris</text>
+  <rect x="520" y="400" width="160" height="4" rx="2" fill="#e2725b"/>
+</svg>

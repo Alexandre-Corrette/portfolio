@@ -71,8 +71,8 @@ enableEmoji = false
     services = true
     portfolio = true
     testimonials = true
-    team = false               # Désactivé par défaut / Disabled by default
-    clients = false            # Désactivé par défaut / Disabled by default
+    team = true                # Activé pour la démo / Enabled for demo
+    clients = true             # Activé pour la démo / Enabled for demo
     cta = true
     contact = true
     order = ["hero", "about", "services", "portfolio", "testimonials", "team", "clients", "cta", "contact"]
@@ -93,7 +93,7 @@ enableEmoji = false
   # — À propos / About
   [params.about]
     title = ""                 # Vide = utilise i18n / Empty = uses i18n
-    image = "/images/portrait.jpg"
+    image = "/images/portrait.svg"
     imageAlt = "L'équipe Studio Horizon"
     # Supporte le Markdown / Supports Markdown
     content = """
@@ -166,7 +166,7 @@ Notre approche mêle stratégie, design et technologie pour créer des expérien
 
   # — SEO
   [params.seo]
-    ogImage = "/images/og-default.jpg"
+    ogImage = "/images/og-default.svg"
     twitterHandle = ""
     jsonldType = "Organization" # "Person" ou "Organization"
 
