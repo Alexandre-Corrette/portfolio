@@ -1,6 +1,44 @@
-{{/* Section About — Stub M1, implémentation complète M2 (FOLIO-7) */}}
-<section class="section section--about" id="about" data-animate>
+{{/* Section About — Layout asymétrique : image + contenu + compteurs */}}
+{{ with .Site.Params.about }}
+<section class="section section--about" id="about">
   <div class="container">
-    <p class="section__placeholder">Section About</p>
+    <div class="about__grid">
+      {{/* Image */}}
+      {{ with .image }}
+      <div class="about__image-col" data-animate>
+        <div class="about__image-wrapper">
+          <img
+            src="{{ . }}"
+            alt="{{ $.Site.Params.about.imageAlt | default $.Site.Title }}"
+            class="about__image"
+            loading="lazy"
+          >
+        </div>
+      </div>
+      {{ end }}
+
+      {{/* Contenu */}}
+      <div class="about__content-col">
+        <h2 class="section__title" data-animate>
+          {{ with .title }}{{ . }}{{ else }}{{ i18n "about_title" | default "À propos" }}{{ end }}
+        </h2>
+
+        {{ with .content }}
+        <div class="about__text prose" data-animate>
+          {{ . | markdownify }}
+        </div>
+        {{ end }}
+
+        {{/* Compteurs */}}
+        {{ with .counters }}
+        <div class="about__counters" data-animate>
+          {{ range . }}
+            {{ partial "components/counter.html" (dict "value" .value "label" .label) }}
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
   </div>
 </section>
+{{ end }}

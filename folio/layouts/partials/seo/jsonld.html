@@ -1,3 +1,4 @@
+{{/* SEO — JSON-LD Structured Data */}}
 {{ $type := .Site.Params.seo.jsonldType | default "Organization" }}
 <script type="application/ld+json">
 {
@@ -9,6 +10,9 @@
   {{- with .Site.Params.seo.ogImage -}}
   ,"image": "{{ . | absURL }}"
   {{- end -}}
+  {{- with .Site.Params.contactEmail -}}
+  ,"email": "{{ . }}"
+  {{- end -}}
   {{- if .Site.Params.footer.social -}}
   ,"sameAs": [
     {{- range $i, $s := .Site.Params.footer.social -}}
@@ -18,3 +22,19 @@
   {{- end -}}
 }
 </script>
+{{ if not .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{{ .Title }}",
+  "url": "{{ .Permalink }}",
+  "description": "{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "{{ .Site.Title }}",
+    "url": "{{ .Site.BaseURL }}"
+  }
+}
+</script>
+{{ end }}

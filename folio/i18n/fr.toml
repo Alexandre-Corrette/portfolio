@@ -47,6 +47,15 @@ other = "Témoignages"
 [team_title]
 other = "L'équipe"
 
+[clients_title]
+other = "Ils nous font confiance"
+
+[filter_all]
+other = "Tous"
+
+[portfolio_view]
+other = "Voir le projet"
+
 [contact_title]
 other = "Contact"
 
@@ -99,9 +108,25 @@ other = "La page que vous cherchez n'existe pas."
 [page_404_back]
 other = "Retour à l'accueil"
 
+# — Contact (compléments)
+[contact_select_default]
+other = "Choisir un sujet"
+
+[contact_required]
+other = "Ce champ est requis"
+
+[contact_email_invalid]
+other = "Adresse email invalide"
+
 # — Accessibilité
 [menu_toggle]
 other = "Menu"
 
 [scroll_top]
 other = "Retour en haut"
+
+[nav_cta]
+other = "Appel à l'action"
+
+[close_menu]
+other = "Fermer le menu"

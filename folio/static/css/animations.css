@@ -26,13 +26,3 @@
   animation: scrollBounce 2s ease-in-out infinite;
 }
 
-/* — Section placeholder (temporaire M1, supprimé en M2) */
-.section__placeholder {
-  padding: 4rem 0;
-  text-align: center;
-  color: var(--color-text-light);
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}

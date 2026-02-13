@@ -1,6 +1,18 @@
-{{/* Section CTA — Stub M1, implémentation complète M2 (FOLIO-11) */}}
-<section class="section section--cta" id="cta" data-animate>
+{{/* Section CTA — Bannière d'appel à l'action */}}
+{{ with .Site.Params.cta }}
+<section class="section section--cta cta-banner" id="cta">
   <div class="container">
-    <p class="section__placeholder">Section CTA</p>
+    <div class="cta-banner__inner" data-animate>
+      {{ with .title }}
+      <h2 class="cta-banner__title">{{ . }}</h2>
+      {{ end }}
+      {{ with .subtitle }}
+      <p class="cta-banner__subtitle">{{ . }}</p>
+      {{ end }}
+      {{ if .buttonText }}
+      {{ partial "components/button.html" (dict "text" .buttonText "url" (.buttonUrl | default "#contact") "style" "primary") }}
+      {{ end }}
+    </div>
   </div>
 </section>
+{{ end }}

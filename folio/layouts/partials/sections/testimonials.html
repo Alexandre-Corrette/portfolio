@@ -1,6 +1,32 @@
-{{/* Section Testimonials — Stub M1, implémentation complète M2 (FOLIO-10) */}}
-<section class="section section--testimonials" id="testimonials" data-animate>
+{{/* Section Testimonials — Carousel scroll-snap CSS */}}
+<section class="section section--testimonials" id="testimonials">
   <div class="container">
-    <p class="section__placeholder">Section Testimonials</p>
+    <div class="section__header" data-animate>
+      <h2 class="section__title">
+        {{ with .Site.Params.testimonials_title }}{{ . }}{{ else }}{{ i18n "testimonials_title" | default "Témoignages" }}{{ end }}
+      </h2>
+    </div>
+
+    {{ with .Site.Data.testimonials }}
+    <div class="testimonials__track" data-animate>
+      {{ range . }}
+      {{ $testimonial := . }}
+      <blockquote class="testimonial">
+        <p class="testimonial__quote">{{ .quote }}</p>
+        <footer class="testimonial__footer">
+          {{ with .avatar }}
+          <img src="{{ . }}" alt="{{ $testimonial.author }}" class="testimonial__avatar" loading="lazy">
+          {{ end }}
+          <div class="testimonial__author-info">
+            <cite class="testimonial__author">{{ .author }}</cite>
+            {{ with .role }}
+            <span class="testimonial__role">{{ . }}</span>
+            {{ end }}
+          </div>
+        </footer>
+      </blockquote>
+      {{ end }}
+    </div>
+    {{ end }}
   </div>
 </section>

@@ -1,6 +1,38 @@
-{{/* Section Team — Stub M1, implémentation complète M2 (FOLIO-11) */}}
-<section class="section section--team" id="team" data-animate>
+{{/* Section Team — Grille membres avec liens sociaux */}}
+<section class="section section--team" id="team">
   <div class="container">
-    <p class="section__placeholder">Section Team</p>
+    <div class="section__header" data-animate>
+      <h2 class="section__title">
+        {{ with .Site.Params.team_title }}{{ . }}{{ else }}{{ i18n "team_title" | default "L'équipe" }}{{ end }}
+      </h2>
+    </div>
+
+    {{ with .Site.Data.team }}
+    <div class="team__grid">
+      {{ range . }}
+      {{ $member := . }}
+      <div class="team__member" data-animate>
+        {{ with .image }}
+        <div class="team__image-wrapper">
+          <img src="{{ . }}" alt="{{ $member.name }}" class="team__image" loading="lazy">
+        </div>
+        {{ end }}
+        <h3 class="team__name">{{ .name }}</h3>
+        <p class="team__role">{{ .role }}</p>
+        {{ with .social }}
+        <div class="team__social">
+          {{ range $platform, $url := . }}
+            {{ if $url }}
+            <a href="{{ $url }}" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="{{ $platform }}">
+              {{ $platform }}
+            </a>
+            {{ end }}
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
   </div>
 </section>

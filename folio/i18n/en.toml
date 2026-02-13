@@ -47,6 +47,15 @@ other = "Testimonials"
 [team_title]
 other = "Our Team"
 
+[clients_title]
+other = "They trust us"
+
+[filter_all]
+other = "All"
+
+[portfolio_view]
+other = "View project"
+
 [contact_title]
 other = "Contact"
 
@@ -99,9 +108,25 @@ other = "The page you are looking for does not exist."
 [page_404_back]
 other = "Back to home"
 
+# — Contact (extras)
+[contact_select_default]
+other = "Choose a subject"
+
+[contact_required]
+other = "This field is required"
+
+[contact_email_invalid]
+other = "Invalid email address"
+
 # — Accessibility
 [menu_toggle]
 other = "Menu"
 
 [scroll_top]
 other = "Back to top"
+
+[nav_cta]
+other = "Call to action"
+
+[close_menu]
+other = "Close menu"
