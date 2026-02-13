@@ -1,3 +1,12 @@
-<meta name="description" content="{{ .Site.Params.description }}">
+{{/* SEO — Meta tags */}}
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 <meta name="author" content="{{ .Site.Params.author }}">
 <link rel="canonical" href="{{ .Permalink }}">
+{{ with .Site.Params.seo.googleVerification }}
+<meta name="google-site-verification" content="{{ . }}">
+{{ end }}
+{{ if .IsHome }}
+<meta name="robots" content="index, follow">
+{{ else if .Params.noindex }}
+<meta name="robots" content="noindex, follow">
+{{ end }}

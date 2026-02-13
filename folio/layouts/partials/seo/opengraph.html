@@ -1,12 +1,22 @@
-<meta property="og:title" content="{{ .Title }}">
-<meta property="og:description" content="{{ .Site.Params.description }}">
-<meta property="og:type" content="website">
+{{/* SEO — Open Graph & Twitter Cards */}}
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:locale" content="{{ .Site.Language.Lang }}_{{ upper .Site.Language.Lang }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:locale" content="{{ .Site.Language.Lang }}">
 {{ with .Site.Params.seo.ogImage }}
 <meta property="og:image" content="{{ . | absURL }}">
+<meta property="og:image:alt" content="{{ $.Site.Title }}">
 {{ end }}
-{{ with .Site.Params.seo.twitterHandle }}
+{{/* Twitter Card */}}
 <meta name="twitter:card" content="summary_large_image">
+{{ with .Site.Params.seo.twitterHandle }}
 <meta name="twitter:site" content="{{ . }}">
+<meta name="twitter:creator" content="{{ . }}">
+{{ end }}
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta name="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+{{ with .Site.Params.seo.ogImage }}
+<meta name="twitter:image" content="{{ . | absURL }}">
 {{ end }}
