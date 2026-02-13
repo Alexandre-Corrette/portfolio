@@ -1,6 +1,26 @@
-{{/* Section Clients — Stub M1, implémentation complète M2 (FOLIO-11) */}}
-<section class="section section--clients" id="clients" data-animate>
+{{/* Section Clients — Grille logos */}}
+<section class="section section--clients" id="clients">
   <div class="container">
-    <p class="section__placeholder">Section Clients</p>
+    <div class="section__header" data-animate>
+      <h2 class="section__title">
+        {{ with .Site.Params.clients_title }}{{ . }}{{ else }}{{ i18n "clients_title" | default "Ils nous font confiance" }}{{ end }}
+      </h2>
+    </div>
+
+    {{ with .Site.Data.clients }}
+    <div class="clients__grid" data-animate>
+      {{ range . }}
+      <div class="clients__item">
+        {{ if .link }}
+        <a href="{{ .link }}" target="_blank" rel="noopener noreferrer" aria-label="{{ .name }}">
+          <img src="{{ .logo }}" alt="{{ .name }}" class="clients__logo" loading="lazy">
+        </a>
+        {{ else }}
+        <img src="{{ .logo }}" alt="{{ .name }}" class="clients__logo" loading="lazy">
+        {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
   </div>
 </section>
