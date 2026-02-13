@@ -98,7 +98,7 @@
               {{ i18n "contact_subject" | default "Sujet" }}
             </label>
             <select id="contact-subject" name="subject" class="contact__input contact__select">
-              <option value="">—</option>
+              <option value="">{{ i18n "contact_select_default" | default "—" }}</option>
               {{ range . }}
               <option value="{{ . }}">{{ . }}</option>
               {{ end }}
