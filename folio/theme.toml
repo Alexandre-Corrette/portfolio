@@ -1,0 +1,12 @@
+name = "Folio"
+license = "Proprietary"
+licenselink = ""
+description = "Premium multi-purpose portfolio theme for Hugo. Fully configurable, i18n-ready, fast, secure."
+homepage = ""
+tags = ["portfolio", "agency", "startup", "business", "responsive", "multilingual", "gsap", "premium"]
+features = ["Configurable sections", "i18n (fr/en)", "GSAP animations", "Multi-mode contact form", "SEO optimized", "CSP security headers"]
+min_version = "0.120.0"
+
+[author]
+  name = "Alexandre Corrette"
+  homepage = ""
