@@ -900,6 +900,122 @@ h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
 }
 
 /* ============================================
+   CONTACT FORM
+   ============================================ */
+.contact__wrapper {
+  max-width: 700px;
+  margin-inline: auto;
+}
+
+.contact__honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact__field--full {
+  margin-bottom: 1.5rem;
+}
+
+.contact__label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.contact__label span {
+  color: var(--color-accent);
+}
+
+.contact__input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  transition: border-color 0.3s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.contact__input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.contact__select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.contact__textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.contact__actions {
+  margin-bottom: 1rem;
+}
+
+.contact__submit {
+  position: relative;
+}
+
+.contact__submit-loading {
+  display: none;
+}
+
+.is-loading .contact__submit-text {
+  display: none;
+}
+
+.is-loading .contact__submit-loading {
+  display: inline;
+}
+
+.contact__feedback {
+  font-size: 0.875rem;
+  padding: 0;
+  min-height: 1.5em;
+}
+
+.contact__feedback--success {
+  color: #059669;
+}
+
+.contact__feedback--error {
+  color: #dc2626;
+}
+
+@media (max-width: 767px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
    SINGLE PAGES
    ============================================ */
 .page-single {

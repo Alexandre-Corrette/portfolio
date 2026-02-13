@@ -89,6 +89,127 @@
     });
   }
 
+  /* — Contact form multi-mode */
+  var contactForm = document.getElementById('contact-form');
+
+  if (contactForm) {
+    var submitBtn = document.getElementById('contact-submit');
+    var feedback = document.getElementById('contact-feedback');
+    var formMethod = contactForm.getAttribute('data-form-method');
+    var formAction = contactForm.getAttribute('data-form-action') || contactForm.getAttribute('action');
+    var rateLimitMs = 5000;
+    var isSubmitting = false;
+
+    // Charger les messages i18n depuis le JSON embed
+    var i18nMessages = { success: 'Message sent!', error: 'An error occurred.' };
+    var i18nEl = document.getElementById('contact-i18n');
+    if (i18nEl) {
+      try {
+        i18nMessages = JSON.parse(i18nEl.textContent);
+      } catch (e) {
+        // Garde les defaults
+      }
+    }
+
+    // Validation email basique
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    // Afficher le feedback (textContent, pas innerHTML)
+    function showFeedback(type, message) {
+      feedback.textContent = message;
+      feedback.className = 'contact__feedback contact__feedback--' + type;
+    }
+
+    // État loading
+    function setLoading(loading) {
+      isSubmitting = loading;
+      contactForm.classList.toggle('is-loading', loading);
+      submitBtn.disabled = loading;
+    }
+
+    contactForm.addEventListener('submit', function (e) {
+      if (isSubmitting) {
+        e.preventDefault();
+        return;
+      }
+
+      // Vérifier honeypot
+      var honeypotInputs = contactForm.querySelectorAll('.contact__honeypot input');
+      for (var i = 0; i < honeypotInputs.length; i++) {
+        if (honeypotInputs[i].value) {
+          e.preventDefault();
+          // Rejet silencieux (simule succès pour le bot)
+          showFeedback('success', i18nMessages.success);
+          return;
+        }
+      }
+
+      // Validation JS
+      var nameVal = (contactForm.querySelector('[name="name"]').value || '').trim();
+      var emailVal = (contactForm.querySelector('[name="email"]').value || '').trim();
+      var messageVal = (contactForm.querySelector('[name="message"]').value || '').trim();
+
+      if (!nameVal || !emailVal || !messageVal) {
+        e.preventDefault();
+        showFeedback('error', i18nMessages.error);
+        return;
+      }
+
+      if (!isValidEmail(emailVal)) {
+        e.preventDefault();
+        showFeedback('error', i18nMessages.error);
+        return;
+      }
+
+      // Mode Netlify et Formspree : soumission HTML native
+      if (formMethod === 'netlify' || formMethod === 'formspree') {
+        setLoading(true);
+        // Laisser la soumission native se faire
+        return;
+      }
+
+      // Mode API : fetch POST JSON
+      e.preventDefault();
+      setLoading(true);
+      feedback.textContent = '';
+      feedback.className = 'contact__feedback';
+
+      var data = {};
+      var formData = new FormData(contactForm);
+      formData.forEach(function (value, key) {
+        // Exclure le honeypot des données envoyées
+        var honeypotName = contactForm.querySelector('.contact__honeypot input');
+        if (honeypotName && key === honeypotName.name) return;
+        data[key] = typeof value === 'string' ? value.trim() : value;
+      });
+
+      fetch(formAction, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function (response) {
+        if (!response.ok) throw new Error('Server error');
+        return response.json();
+      })
+      .then(function () {
+        showFeedback('success', i18nMessages.success);
+        contactForm.reset();
+      })
+      .catch(function () {
+        showFeedback('error', i18nMessages.error);
+      })
+      .finally(function () {
+        // Rate limit UI : désactiver 5s après soumission
+        setTimeout(function () {
+          setLoading(false);
+        }, rateLimitMs);
+      });
+    });
+  }
+
   /* — No-JS flag removal */
   document.documentElement.classList.remove('no-js');
 
