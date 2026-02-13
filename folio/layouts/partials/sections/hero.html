@@ -1,6 +1,49 @@
-{{/* Section Hero — Stub M1, implémentation complète M2 (FOLIO-6) */}}
-<section class="section section--hero" id="hero" data-animate>
-  <div class="container">
-    <p class="section__placeholder">Section Hero</p>
+{{/* Hero — Données depuis params.hero */}}
+{{ with .Site.Params.hero }}
+<section class="section section--hero hero" id="hero">
+  {{/* Image de fond optionnelle */}}
+  {{ with .backgroundImage }}
+  <div class="hero__bg" style="background-image: url('{{ . }}');" role="img" aria-label="{{ $.Site.Title }}"></div>
+  {{ end }}
+  <div class="hero__overlay"></div>
+
+  <div class="container hero__container">
+    {{/* Badge */}}
+    {{ with .badge }}
+      <div class="hero__badge" data-animate>{{ . }}</div>
+    {{ end }}
+
+    {{/* Titre */}}
+    {{ with .title }}
+      <h1 class="hero__title" data-animate>{{ . }}</h1>
+    {{ end }}
+
+    {{/* Sous-titre */}}
+    {{ with .subtitle }}
+      <p class="hero__subtitle" data-animate>{{ . }}</p>
+    {{ end }}
+
+    {{/* CTAs */}}
+    {{ if or .cta1.text .cta2.text }}
+      <div class="hero__cta" data-animate>
+        {{ with .cta1 }}
+          {{ if .text }}
+            {{ partial "components/button.html" (dict "text" .text "url" .url "style" "primary") }}
+          {{ end }}
+        {{ end }}
+        {{ with .cta2 }}
+          {{ if .text }}
+            {{ partial "components/button.html" (dict "text" .text "url" .url "style" "outline") }}
+          {{ end }}
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+
+  {{/* Indicateur scroll */}}
+  <div class="hero__scroll" aria-hidden="true">
+    <span class="hero__scroll-text">{{ i18n "hero_scroll" | default "Scroll" }}</span>
+    <div class="hero__scroll-line"></div>
   </div>
 </section>
+{{ end }}
