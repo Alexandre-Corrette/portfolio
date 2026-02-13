@@ -47,6 +47,15 @@ other = "Témoignages"
 [team_title]
 other = "L'équipe"
 
+[clients_title]
+other = "Ils nous font confiance"
+
+[filter_all]
+other = "Tous"
+
+[portfolio_view]
+other = "Voir le projet"
+
 [contact_title]
 other = "Contact"
 

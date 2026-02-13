@@ -62,6 +62,33 @@
     });
   }
 
+  /* — Portfolio tag filter */
+  var filterBtns = document.querySelectorAll('.portfolio__filter');
+  var portfolioItems = document.querySelectorAll('.portfolio__item');
+
+  if (filterBtns.length && portfolioItems.length) {
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = btn.getAttribute('data-filter');
+
+        // Active state
+        filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+
+        // Filter items
+        portfolioItems.forEach(function (item) {
+          var tags = item.getAttribute('data-tags') || '';
+          if (filter === 'all' || tags.split(',').indexOf(filter) !== -1) {
+            item.classList.remove('is-hidden');
+            item.style.position = '';
+          } else {
+            item.classList.add('is-hidden');
+          }
+        });
+      });
+    });
+  }
+
   /* — No-JS flag removal */
   document.documentElement.classList.remove('no-js');
 

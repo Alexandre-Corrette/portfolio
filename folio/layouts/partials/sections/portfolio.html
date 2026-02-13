@@ -1,6 +1,71 @@
-{{/* Section Portfolio — Stub M1, implémentation complète M2 (FOLIO-9) */}}
-<section class="section section--portfolio" id="portfolio" data-animate>
+{{/* Section Portfolio — Grille filtrée par tags avec overlay hover */}}
+<section class="section section--portfolio" id="portfolio">
   <div class="container">
-    <p class="section__placeholder">Section Portfolio</p>
+    <div class="section__header" data-animate>
+      <h2 class="section__title">
+        {{ with .Site.Params.portfolio_title }}{{ . }}{{ else }}{{ i18n "portfolio_title" | default "Réalisations" }}{{ end }}
+      </h2>
+      {{ with .Site.Params.portfolio_subtitle }}
+        <p class="section__subtitle">{{ . }}</p>
+      {{ end }}
+    </div>
+
+    {{ with .Site.Data.portfolio }}
+    {{/* Collecte des tags uniques */}}
+    {{ $allTags := slice }}
+    {{ range . }}
+      {{ range .tags }}
+        {{ if not (in $allTags .) }}
+          {{ $allTags = $allTags | append . }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{/* Filtres */}}
+    {{ if gt (len $allTags) 0 }}
+    <div class="portfolio__filters" data-animate>
+      <button class="portfolio__filter is-active" data-filter="all">
+        {{ i18n "filter_all" | default "Tous" }}
+      </button>
+      {{ range $allTags }}
+      <button class="portfolio__filter" data-filter="{{ . }}">{{ . }}</button>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{/* Grille */}}
+    <div class="portfolio__grid">
+      {{ range . }}
+      <article
+        class="portfolio__item"
+        data-tags="{{ delimit .tags "," }}"
+        data-animate
+      >
+        <div class="portfolio__image-wrapper">
+          <img
+            src="{{ .image }}"
+            alt="{{ .title }}"
+            class="portfolio__image"
+            loading="lazy"
+          >
+          <div class="portfolio__overlay">
+            <h3 class="portfolio__title">{{ .title }}</h3>
+            <p class="portfolio__description">{{ .description }}</p>
+            {{ with .link }}
+            <a href="{{ . }}" class="portfolio__link btn btn--outline">
+              {{ i18n "portfolio_view" | default "Voir le projet" }}
+            </a>
+            {{ end }}
+          </div>
+        </div>
+        <div class="portfolio__tags">
+          {{ range .tags }}
+          <span class="portfolio__tag">{{ . }}</span>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    {{ end }}
   </div>
 </section>

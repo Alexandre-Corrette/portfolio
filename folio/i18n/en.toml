@@ -47,6 +47,15 @@ other = "Testimonials"
 [team_title]
 other = "Our Team"
 
+[clients_title]
+other = "They trust us"
+
+[filter_all]
+other = "All"
+
+[portfolio_view]
+other = "View project"
+
 [contact_title]
 other = "Contact"
 
