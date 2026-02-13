@@ -1,6 +1,29 @@
-{{/* Section Services — Stub M1, implémentation complète M2 (FOLIO-8) */}}
-<section class="section section--services" id="services" data-animate>
+{{/* Section Services — Grille de cards depuis data/services.yaml */}}
+<section class="section section--services" id="services">
   <div class="container">
-    <p class="section__placeholder">Section Services</p>
+    <div class="section__header" data-animate>
+      <h2 class="section__title">
+        {{ with .Site.Params.services_title }}{{ . }}{{ else }}{{ i18n "services_title" | default "Services" }}{{ end }}
+      </h2>
+      {{ with .Site.Params.services_subtitle }}
+        <p class="section__subtitle">{{ . }}</p>
+      {{ end }}
+    </div>
+
+    {{ with .Site.Data.services }}
+    <div class="services__grid">
+      {{ range . }}
+      <div class="services__item" data-animate>
+        {{ partial "components/card.html" (dict
+          "title" .title
+          "description" .description
+          "icon" .icon
+          "badge" .badge
+          "link" .link
+        ) }}
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
   </div>
 </section>
