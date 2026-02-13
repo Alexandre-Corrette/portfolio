@@ -10,10 +10,11 @@
     {{ with .Site.Data.team }}
     <div class="team__grid">
       {{ range . }}
+      {{ $member := . }}
       <div class="team__member" data-animate>
         {{ with .image }}
         <div class="team__image-wrapper">
-          <img src="{{ . }}" alt="{{ $.name }}" class="team__image" loading="lazy">
+          <img src="{{ . }}" alt="{{ $member.name }}" class="team__image" loading="lazy">
         </div>
         {{ end }}
         <h3 class="team__name">{{ .name }}</h3>
